@@ -21,7 +21,7 @@ resource "aws_route" "instance" {
 
   route_table_id         = var.priv_route_table
   destination_cidr_block = "0.0.0.0/0"
-  instance_id            = element(aws_instance.this.*.id, 0)
+  network_interface_id   = element(aws_instance.this.*.primary_network_interface_id, 0)
 }
 
 resource "aws_nat_gateway" "this" {
